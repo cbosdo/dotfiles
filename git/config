@@ -1,0 +1,24 @@
+[user]
+    email = cbosdonnat@suse.com 
+    name = Cédric Bosdonnat
+    signingkey = 0xB51ADE1A
+[push]
+    default = tracking
+[sendemail]
+    chainreplyto = false
+    confirm = auto
+[color]
+    ui = auto
+[core]
+    excludesfile = ~/.gitignore
+    editor = nvim
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    cp = cherry-pick
+[init]
+    defaultBranch = master
+[commit]
+    gpgsign = true
