@@ -1,0 +1,21 @@
+snippet component "react component" b
+// @flow
+import * as React from 'react';
+
+type Props = {
+  /** ${4:Document the property} */
+  ${2:property}: ${3:string},
+};
+
+/**
+ */
+export function ${1:`!p snip.rv = snip.basename`}(props: Props) {
+  return(
+    <>${5:<p>TODO Implement me</p>}
+    </>
+  )
+}
+
+$6`!p snip.rv = snip.basename`.defaultProps = {
+};
+endsnippet

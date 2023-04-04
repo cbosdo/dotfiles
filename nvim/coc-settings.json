@@ -1,7 +1,17 @@
 {
     "tsserver.tsdk": ".node_modules/typescript/lib",
-    "python.venvFolders": [".venv"],
+    "python.venvFolders": [
+        ".venv"
+    ],
     "python.pythonPath": "python3",
     "python.formatting.provider": "black",
-    "coc-preferences-enableMessageDialog": true
+    "coc-preferences-enableMessageDialog": true,
+    "suggest.noselect": false,
+    "diagnostic.errorSign": "\u2718",
+    "diagnostic.warningSign": "!",
+    "diagnostic.infoSign": "?",
+    "diagnostic.checkCurrentLine": true,
+    "go.goplsOptions": {
+        "staticcheck": true
+    }
 }

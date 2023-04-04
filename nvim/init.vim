@@ -22,7 +22,8 @@ autocmd BufRead *.html,*.css,*.js,*.ts,*.tsx setlocal sw=2 ts=2
 
 call plug#begin()
 
-Plug 'Erichain/vim-monokai-pro', {'do': ':UpdateRemotePlugins'}
+"Plug 'Erichain/vim-monokai-pro', {'do': ':UpdateRemotePlugins'}
+Plug 'ayu-theme/ayu-vim', {'do': ':UpdateRemotePlugins'}
 
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
@@ -69,11 +70,20 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 set updatetime=300  " shorter delays, better user experience
 
 " Use tab for trigger completion with characters ahead and navigate.
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ CheckBackSpace() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackSpace() abort
   let col = col('.') - 1
@@ -84,14 +94,8 @@ let g:coc_snippet_next = '<tab>'
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-if has('patch8.1.1068')
-  " Use `complete_info` if your (Neo)Vim version supports it.
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -172,6 +176,9 @@ let g:vista_executive_for = {'pandoc': 'markdown'}
 " JS plugins
 Plug 'wokalski/autocomplete-flow',  { 'do': ':UpdateRemotePlugins' }
 
+" Go plugins
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 " Markdown setup
 " See https://jdhao.github.io/2019/01/15/markdown_edit_preview_nvim
 Plug 'SirVer/ultisnips'
@@ -206,9 +213,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax',  { 'do': ':UpdateRemotePlugins' }
 "    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 "augroup END
 
-" Markdown preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
-let g:mkdp_auto_close = 0
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Comments management
 Plug 'scrooloose/nerdcommenter',  { 'do': ':UpdateRemotePlugins' }
@@ -233,7 +238,9 @@ call plug#end()
 
 set termguicolors
 set t_Co=256
-colorscheme monokai_pro
+let ayucolor="dark"
+"colorscheme monokai_pro
+colorscheme ayu
 
 " Use system clipboard
 set clipboard+=unnamedplus
