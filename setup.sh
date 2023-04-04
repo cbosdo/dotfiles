@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # install fzf, exa, kitty, ripgrep
-sudo zypper -n install fish fzf fzf-fish-completion exa exa-fish-completion kitty kitty-fish-completion ripgrep ripgrep-fish-completion bat
+sudo zypper -n install git-core neovim fish fzf fzf-fish-completion exa exa-fish-completion kitty kitty-fish-completion ripgrep ripgrep-fish-completion bat
 
 mkdir -p ~/.config
 
