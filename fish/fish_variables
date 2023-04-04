@@ -1,8 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export KUBECONFIG:/etc/rancher/k3s/k3s\x2eyaml
 SETUVAR --export LIBVIRT_DEFAULT_URI:qemu\x3a///system
 SETUVAR --export SSH_AUTH_SOCK:/run/user/1000/gnupg/S\x2egpg\x2dagent\x2essh
+SETUVAR --export TERM:xterm\x2dkitty
 SETUVAR --export TMPDIR:/tmp
 SETUVAR --export VIRTUAL_ENV_DISABLE_PROMPT:yes
 SETUVAR __fish_init_2_39_8:\x1d
