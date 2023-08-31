@@ -42,8 +42,6 @@ endif
 Plug 'preservim/nerdtree',  { 'do': ':UpdateRemotePlugins' }
 Plug 'Xuyuanp/nerdtree-git-plugin',  { 'do': ':UpdateRemotePlugins' }
 nnoremap <leader>t :NERDTreeFocus<CR>
-" Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
@@ -233,7 +231,11 @@ let g:indentLine_char = '┊'
 let g:indentLine_concealcursor='nc'
 
 " Salt states files editing
-Plug 'saltstack/salt-vim',  { 'do': ':UpdateRemotePlugins' } 
+Plug 'saltstack/salt-vim',  { 'do': ':UpdateRemotePlugins' }
+
+" Project-located vim config
+Plug 'LucHermitte/lh-vim-lib',  { 'do': ':UpdateRemotePlugins' }
+Plug 'LucHermitte/local_vimrc',  { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 set termguicolors
@@ -256,3 +258,9 @@ endfunction
 
 " Format XML in place
 command! FormatXML silent :%!xmllint --format -
+
+" Use rg as grep tool
+set grepprg=rg\ -n\ --color=never\ --no-heading
+
+" White list local_vimrc paths
+call lh#local_vimrc#munge('whitelist', '/public/src/')
