@@ -105,6 +105,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Search workspace symbols.
+nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -264,3 +266,4 @@ set grepprg=rg\ -n\ --color=never\ --no-heading
 
 " White list local_vimrc paths
 call lh#local_vimrc#munge('whitelist', '/public/src/')
+let g:local_vimrc = ['.vimrc']
