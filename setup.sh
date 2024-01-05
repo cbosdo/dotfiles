@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # install fzf, exa, kitty, ripgrep
-sudo zypper -n install --no-recommends git-core nodejs19 neovim fish fzf fzf-fish-completion exa exa-fish-completion kitty ripgrep ripgrep-fish-completion bat rbenv
+sudo zypper -n install --no-recommends git-core nodejs19 neovim fish fzf fzf-fish-completion eza eza-fish-completion kitty ripgrep ripgrep-fish-completion bat rbenv
 
 mkdir -p ~/.config
 
