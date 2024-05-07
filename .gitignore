@@ -1,3 +1,4 @@
 nvim/plugged
+nvim/lazy-lock.json
 fish/*completions
 kitty/kitty-themes
