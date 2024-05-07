@@ -1,5 +1,5 @@
 if test "z$KITTY_PID" != "z"
-  function ssh --description 'alias ssh=kitty +kitten ssh'
+  function s --description 'alias s=kitty +kitten ssh'
     kitty +kitten ssh $argv;
   end
 end
