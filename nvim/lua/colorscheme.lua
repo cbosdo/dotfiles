@@ -1,5 +1,5 @@
 vim.cmd 'set termguicolors'
-vim.cmd 'colorscheme ayu'
+vim.cmd 'colorscheme catppuccin-macchiato'
 
 -- lua line setup
 require('lualine').setup()
