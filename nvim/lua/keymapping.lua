@@ -15,8 +15,7 @@ wk.register({
         name = "Tabs and panes",
         f = { "<cmd>NvimTreeFindFileToggle<cr>", "Toggle files list" },
         o = { "<cmd>Outline<cr>", "Toggle Outline" },
-        n = { "<cmd>tabnext<cr>", "Next tab" },
-        p = { "<cmd>tabprev<cr>", "Previous tab" },
         u = { "<cmd>UndotreeToggle<cr>", "Undo history" },
+        d = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
     },
 }, { prefix = "<leader>" })
