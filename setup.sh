@@ -42,6 +42,16 @@ if test ! -L  ~/.config/bat; then
 fi
 ln -fs ${PWD}/bat ~/.config
 
+# bin files
+for bin in ${PWD}/bin/*; do
+    echo "Adding $bin script..."
+    name=`basename $bin`
+    if test ! -L ~/bin/$name; then
+        rm -rf ~/bin/$name
+    fi
+    ln -ls ${PWD}/$bin ~/bin/$name
+done
+
 # fish
 echo "Preparing fish..."
 if test ! -L ~/.config/fish; then
