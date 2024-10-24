@@ -32,7 +32,11 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
         config = function()
-            require("go").setup()
+            require("go").setup({
+                trouble = true,
+            })
+            -- Don't exclude defaults from GoLint
+            vim.cmd([[command! GoLint :setl makeprg=golangci-lint\ run\ --print-issued-lines=false\ --out-format=line-number | :GoMake]])
         end,
         event = {"CmdlineEnter"},
         ft = {"go", 'gomod'},
