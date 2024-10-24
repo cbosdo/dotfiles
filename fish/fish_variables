@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export LIBVIRT_DEFAULT_URI:qemu\x3a///system
+SETUVAR --export MANPAGER:nvim\x20\x2bMan\x21
 SETUVAR --export SSH_AUTH_SOCK:/run/user/1000/gnupg/S\x2egpg\x2dagent\x2essh
 SETUVAR --export TERM:xterm\x2dkitty
 SETUVAR --export TMPDIR:/tmp
