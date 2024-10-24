@@ -1,7 +1,7 @@
 [user]
     email = cbosdonnat@suse.com 
     name = Cédric Bosdonnat
-    signingkey = 0xB51ADE1A
+    signingkey = 0x2C881A21
 [push]
     default = tracking
 [sendemail]
