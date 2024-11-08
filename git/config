@@ -12,6 +12,7 @@
 [core]
     excludesfile = ~/.gitignore
     editor = nvim
+    symlinks = true
 [alias]
     co = checkout
     br = branch
