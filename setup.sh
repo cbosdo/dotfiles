@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # install fzf, exa, kitty, ripgrep
-#sudo zypper -n install --no-recommends git-core nodejs19 neovim fish fzf fzf-fish-completion eza eza-fish-completion kitty ripgrep ripgrep-fish-completion bat rbenv
+#sudo zypper -n install --no-recommends git-core nodejs22 neovim python311-neovim fish fzf fzf-fish-integration eza eza-fish-completion kitty ripgrep ripgrep-fish-completion bat rbenv yarn go1.21
 
 mkdir -p ~/.config
 
@@ -41,7 +41,7 @@ for bin in ${PWD}/bin/*; do
     if test ! -L ~/bin/$name; then
         rm -rf ~/bin/$name
     fi
-    ln -ls ${PWD}/$bin ~/bin/$name
+    ln -s $bin ~/bin/$name
 done
 
 # fish
