@@ -1,6 +1,7 @@
 return {
     { "williamboman/mason.nvim", lazy = false },
     { "williamboman/mason-lspconfig.nvim", lazy = false },
+    { "folke/neoconf.nvim" },
     "neovim/nvim-lspconfig",
     {
         "hedyhli/outline.nvim",
@@ -50,5 +51,6 @@ return {
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         },
-    }
+    },
+    { "nvim-java/nvim-java" }
 }
