@@ -51,12 +51,8 @@ if test ! -L ~/.config/fish; then
 fi
 ln -fs ${PWD}/fish ~/.config
 
-if test ! -L ~/.config/omf; then
-   rm -rf ~/.config/omf
-fi
-ln -fs ${PWD}/omf ~/.config
-if test ! -e ~/.local/share/omf; then
-    curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+if test ! -e ~/.config/fish/functions/fisher.fish; then
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 fi
 
 echo "Don't forget to change the default shell to fish!"

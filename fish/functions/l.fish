@@ -1,3 +1,4 @@
-function l --wraps=eza --description 'alias l=eza'
-  eza $argv;
+function l --wraps=eza --wraps='eza $EZA_STANDARD_OPTIONS $EZA_L_OPTIONS' --description 'alias l eza $EZA_STANDARD_OPTIONS $EZA_L_OPTIONS'
+  eza $EZA_STANDARD_OPTIONS $EZA_L_OPTIONS $argv
+        
 end
