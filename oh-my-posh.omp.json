@@ -1,0 +1,181 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "upgrade": {
+    "source": "cdn",
+    "interval": "168h",
+    "auto": false,
+    "notice": false
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "leading_diamond": "\u256d\u2500\ue0b6",
+          "foreground": "#ffffff",
+          "background": "#73ba25",
+          "type": "os",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "folder_icon": " \uf07b ",
+            "home_icon": "\ue617",
+            "style": "full"
+          },
+          "template": " \uf07b\uea9c {{ .Path }} ",
+          "foreground": "#2d3436",
+          "powerline_symbol": "\ue0b0",
+          "background": "#0087d8",
+          "type": "path",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "branch_icon": "\ue725 ",
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<#ef5350> \uf046 {{ .Staging.String }}</>{{ end }} ",
+          "foreground": "#011627",
+          "powerline_symbol": "\ue0b0",
+          "background": "#FFFB38",
+          "type": "git",
+          "style": "powerline",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#ffeb95{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#c5e478{{ end }}",
+            "{{ if gt .Ahead 0 }}#C792EA{{ end }}",
+            "{{ if gt .Behind 0 }}#C792EA{{ end }}"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "properties": {
+            "fetch_package_manager": true,
+            "npm_icon": " <#cc3a3a>\ue5fa</> ",
+            "yarn_icon": " <#348cba>\ue6a7</>"
+          },
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4 ",
+          "template": "\ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}",
+          "foreground": "#3C873A",
+          "background": "#303030",
+          "type": "node",
+          "style": "diamond"
+        },
+        {
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4 ",
+          "template": "\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}",
+          "foreground": "#FFE873",
+          "background": "#306998",
+          "type": "python",
+          "style": "diamond"
+        },
+        {
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4 ",
+          "template": "\ue738 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "foreground": "#ffffff",
+          "background": "#0e8ac8",
+          "type": "java",
+          "style": "diamond"
+        },
+        {
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4 ",
+          "template": "\ue627 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "foreground": "#06aad5",
+          "background": "#ffffff",
+          "type": "go",
+          "style": "diamond"
+        },
+        {
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4 ",
+          "template": "\ue791 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "foreground": "#9c1006",
+          "background": "#ffffff",
+          "type": "ruby",
+          "style": "diamond"
+        },
+        {
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "\uf308 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}",
+          "foreground": "#ffffff",
+          "background": "#316ce4",
+          "type": "kubectl",
+          "style": "diamond"
+        },
+        {
+          "type": "text",
+          "style": "diamond",
+          "background": "#25bbbf",
+          "leading_diamond": "\ue0b2",
+          "background_templates": [
+            "{{ if ne .Env.TEST \"\" }}#de076f{{ end }}"
+          ],
+          "template": "{{ if ne .Env.OBS_PROJ \"\"}}{{ $proj := replaceP \"home:\" .Env.OBS_PROJ \"\" }}{{ $proj := replaceP \":branches\" $proj \"\" }}{{ $proj := replaceP \"Devel:Galaxy:Manager\" $proj \"\" }}{{ $proj := replaceP \"systemsmanagement:Uyuni\" $proj \"\" }} {{ if ne .Env.TEST \"\" }}\ue729{{else}}\uf02b{{end}} {{ $proj }} {{ end }}"
+        },
+        {
+          "properties": {
+            "threshold": 0
+          },
+          "leading_diamond": "\ue0b2",
+          "template": " \ueba2 {{ .FormattedMs }}\u2800",
+          "foreground": "#ffffff",
+          "background": "#83769c",
+          "type": "executiontime",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "time_format": "15:04"
+          },
+          "leading_diamond": "\ue0b2",
+          "trailing_diamond": "\ue0b4",
+          "template": " \uf073 {{ .CurrentDate | date .Format }} ",
+          "foreground": "#ffffff",
+          "background": "#40c4ff",
+          "type": "time",
+          "style": "diamond",
+          "invert_powerline": true
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "template": "\u2570\u2500",
+          "foreground": "#73ba25",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "always_enabled": true
+          },
+          "template": "\ue285\ueab6 ",
+          "foreground": "#e0f8ff",
+          "type": "status",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}#ef5350{{ end }}"
+          ]
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3
+}

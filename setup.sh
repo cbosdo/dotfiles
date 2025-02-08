@@ -44,6 +44,9 @@ for bin in ${PWD}/bin/*; do
     ln -s $bin ~/bin/$name
 done
 
+# Installing oh-my-posh
+curl -s https://ohmyposh.dev/install.sh | bash -s
+
 # fish
 echo "Preparing fish..."
 if test ! -L ~/.config/fish; then
@@ -54,5 +57,6 @@ ln -fs ${PWD}/fish ~/.config
 if test ! -e ~/.config/fish/functions/fisher.fish; then
     curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 fi
+
 
 echo "Don't forget to change the default shell to fish!"
