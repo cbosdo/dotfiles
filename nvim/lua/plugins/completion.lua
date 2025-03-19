@@ -6,6 +6,7 @@ return {
     "hrsh7th/cmp-cmdline",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lua",
+    "f3fora/cmp-spell",
 
     -- snippets
     {

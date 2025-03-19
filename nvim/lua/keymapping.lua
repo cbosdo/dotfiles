@@ -15,4 +15,8 @@ wk.add({
     { "<leader>tf", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle files list" },
     { "<leader>to", "<cmd>Outline<cr>", desc = "Toggle Outline" },
     { "<leader>tu", "<cmd>UndotreeToggle<cr>", desc = "Undo history" },
+    { "<leader>tt", group = "Terminal" },
+    { "<leader>ttt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal"},
+    { "<leader>tta", "<cmd>ToggleTermToggleAll<cr>", desc = "All Terminals"},
+    { "<leader>ttl", "<cmd>ToggleTermSendCurrentLine<cr>", desc = "Send current line to terminal"},
 })
