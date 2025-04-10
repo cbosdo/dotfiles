@@ -19,6 +19,14 @@
           "style": "diamond"
         },
         {
+          "type": "text",
+          "style": "powerline",
+          "foreground": "#ffffff",
+          "background": "#7a59b7",
+          "powerline_symbol": "\ue0b0",
+          "template": "{{ if .Env.CONTAINER_ID }} \uf4b7 {{ end }}{{ .Env.CONTAINER_ID }}"
+        },
+        {
           "properties": {
             "folder_icon": " \uf07b ",
             "home_icon": "\ue617",
