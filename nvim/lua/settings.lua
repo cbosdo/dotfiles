@@ -10,7 +10,7 @@ vim.opt.smartindent = true
 vim.opt.showmatch = true
 vim.opt.showmode = true
 vim.cmd('set nohlsearch')
-vim.opt.colorcolumn = "120"
+vim.opt.colorcolumn = "130"
 
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
