@@ -9,6 +9,7 @@ wk.add({
     { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
     { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
     { "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "Symbol references" },
+    { "<leader>fi", "<cmd>Telescope lsp_implementations<cr>", desc = "Symbol implementations" },
     { "<leader>fs", "<cmd>Telescope symbols<cr>", desc = "Emojis and symbols" },
     { "<leader>t", group = "Tabs and panes" },
     { "<leader>td", "<cmd>Trouble diagnostics toggle focus=true<cr>", desc = "Diagnostics" },

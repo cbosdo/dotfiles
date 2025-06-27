@@ -125,3 +125,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
     group = format_sync_grp,
 })
+
+-- highlight occurrences of symbols in document.
+vim.api.nvim_create_autocmd(
+    {"CursorHold", "CursorHoldI"},{
+    pattern = {"<buffer>"},
+    callback = function() vim.lsp.buf.document_highlight() end,
+})
+vim.api.nvim_create_autocmd(
+    {"CursorMoved"},{
+    pattern = {"<buffer>"},
+    callback = function() vim.lsp.buf.clear_references() end,
+})
