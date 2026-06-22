@@ -126,12 +126,16 @@
         {
           "type": "text",
           "style": "diamond",
-          "background": "#25bbbf",
+          "background": "#1aad95",
+          "foreground": "#000000",
           "leading_diamond": "\ue0b2",
           "background_templates": [
-            "{{ if ne .Env.TEST \"\" }}#de076f{{ end }}"
+            "{{ if ne .Env.GIT_SRV \"src.opensuse.org\" }}{{ if ne .Env.TEST \"\" }}#fe7c3f{{else}}#0c322c{{end}}{{else}}{{ if ne .Env.TEST \"\" }}#7cb054{{ end }}{{end}}"
           ],
-          "template": "{{ if ne .Env.OBS_PROJ \"\"}}{{ $proj := replaceP \"home:\" .Env.OBS_PROJ \"\" }}{{ $proj := replaceP \":branches\" $proj \"\" }}{{ $proj := replaceP \"Devel:Galaxy:Manager\" $proj \"\" }}{{ $proj := replaceP \"systemsmanagement:Uyuni\" $proj \"\" }} {{ if ne .Env.TEST \"\" }}\ue729{{else}}\uf02b{{end}} {{ $proj }} {{ end }}"
+          "foreground_templates": [
+            "{{ if and (ne .Env.GIT_SRV \"src.opensuse.org\") (eq .Env.TEST \"\") }}#ffffff{{end}}"
+          ],
+          "template": "{{ if ne .Env.GIT_ORG \"\"}}{{ if ne .Env.TEST \"\" }}\ue729{{else}}\uf02b{{end}} {{ if ne .Env.GIT_SRV \"src.opensuse.org\" }}\uf1cd{{else}}\ue24f{{end}} {{ .Env.GIT_ORG }} {{ end }}"
         },
         {
           "properties": {

@@ -25,3 +25,6 @@
     gpgsign = true
 [tag]
     gpgsign = true
+
+[credential "https://src.opensuse.org"]
+    helper = "git-obs -G cbosdonnat login gitcredentials-helper"
