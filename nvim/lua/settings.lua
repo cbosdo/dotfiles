@@ -45,3 +45,18 @@ vim.api.nvim_create_autocmd(
         end
     end
 })
+
+-- Show all characters
+vim.opt.list = true
+vim.opt.listchars:append({ nbsp = '⍽' })
+
+-- Replace NNBSP (U+202F) and NBSP (0+00A0) with standard space
+-- The 'e' flag prevents errors if the character isn't found
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    local save_cursor = vim.fn.getpos(".")
+    vim.cmd([[%s/[\u00a0\u202f]/ /ge]])
+    vim.fn.setpos(".", save_cursor)
+  end,
+})
