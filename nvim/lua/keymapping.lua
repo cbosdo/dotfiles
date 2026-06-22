@@ -18,6 +18,7 @@ wk.add({
     { "<leader>tu", "<cmd>UndotreeToggle<cr>", desc = "Undo history" },
     { "<leader>tt", group = "Terminal" },
     { "<leader>ttt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal"},
+    { "<leader>ttv", "<cmd>ToggleTerm direction=vertical size=100<cr>", desc = "Toggle vertical Terminal"},
     { "<leader>tta", "<cmd>ToggleTermToggleAll<cr>", desc = "All Terminals"},
     { "<leader>ttl", "<cmd>ToggleTermSendCurrentLine<cr>", desc = "Send current line to terminal"},
     { "<leader>w", group = "Windows" },
