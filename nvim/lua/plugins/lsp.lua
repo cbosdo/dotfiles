@@ -1,6 +1,13 @@
 return {
     { "williamboman/mason.nvim", lazy = false },
-    { "williamboman/mason-lspconfig.nvim", lazy = false },
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {},
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        },
+    },
     { "folke/neoconf.nvim" },
     "neovim/nvim-lspconfig",
     {
@@ -8,8 +15,15 @@ return {
         config = function()
             require("outline").setup {
                 -- Your setup opts here (leave empty to use defaults)
+                providers = {
+                    priority = { 'lsp', 'coc', 'markdown', 'norg', 'asciidoc' },
+                },
             }
         end,
+        event = "VeryLazy",
+        dependencies = {
+            'msr1k/outline-asciidoc-provider.nvim'
+        },
     },
     {
         "utilyre/barbecue.nvim",
@@ -37,7 +51,7 @@ return {
                 trouble = true,
             })
             -- Don't exclude defaults from GoLint
-            vim.cmd([[command! GoLint :setl makeprg=golangci-lint\ run\ --print-issued-lines=false\ --out-format=line-number | :GoMake]])
+            vim.cmd([[command! GoLint :setl makeprg=golangci-lint\ run\ | :GoMake]])
         end,
         event = {"CmdlineEnter"},
         ft = {"go", 'gomod'},
@@ -52,5 +66,12 @@ return {
             -- refer to the configuration section below
         },
     },
-    { "nvim-java/nvim-java" }
+    { "nvimtools/none-ls.nvim" },
+    {
+        'nvim-java/nvim-java',
+        config = function()
+            require('java').setup()
+            vim.lsp.enable('jdtls')
+        end,
+    }
 }

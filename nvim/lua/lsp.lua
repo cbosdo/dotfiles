@@ -1,18 +1,9 @@
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require('java').setup()
 require('neoconf').setup({})
 
 require('mason').setup()
 require('mason-lspconfig').setup()
-require("mason-lspconfig").setup_handlers {
-    -- The first entry (without a key) will be the default handler
-    -- and will be called for each installed server that doesn't have
-    -- a dedicated handler.
-    function(server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup {}
-    end,
-}
 
 -- barbecue shows the breadcrumbs using LSP
 require("barbecue").setup()
@@ -65,10 +56,28 @@ require('ufo').setup({
     fold_virt_text_handler = handler,
 })
 
-local lspconfig = require('lspconfig')
-for _, server in ipairs(require('mason-lspconfig').get_installed_servers()) do
-    lspconfig[server].setup({capabilities = lsp_capabilities})
-end
+-- Add autoformat for python
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local null_ls = require("null-ls")
+
+null_ls.setup({
+    on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+                    vim.lsp.buf.format({ bufnr = bufnr })
+                end,
+            })
+        end
+    end,
+    sources = {
+        null_ls.builtins.formatting.black,
+    },
+})
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
