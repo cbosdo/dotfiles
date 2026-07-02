@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins')
 require('settings')
+require('bugzilla')
 require('colorscheme')
 require('completion')
 require('lsp')
